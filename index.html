@@ -14,21 +14,25 @@
                 <div class="twentyPX">
                     <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
                         <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <strong>Teknikum E-sport</strong>
+                            </a>
                             <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBase">
                                 <span aria-hidden="true"></span>
                                 <span aria-hidden="true"></span>
                                 <span aria-hidden="true"></span>
                                 <span aria-hidden="true"></span>
+                                
                             </a>
                         </div>
 
                         <div id="navbarBase" class="navbar-menu">
                             <div class="navbar-start">
-                                <a href="#" class="navbar-item">
+                                <a href="index.html" class="navbar-item">
                                     Startsida
                                 </a>
 
-                                <a href="#" class="navbar-item">
+                                <a href="taktiker.html" class="navbar-item">
                                     Taktiker
                                 </a>
 
@@ -58,10 +62,90 @@
                             </div>
                         </div>
                     </nav>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const burger = document.querySelector('.navbar-burger');
+                            const menu = document.getElementById(burger.dataset.target);
+
+                            burger.addEventListener('click', () => {
+                                burger.classList.toggle('is-active');
+                                menu.classList.toggle('is-active');
+                            })
+                        })
+                    </script>
                 </div>
             </div>
+            <div class="cell is-col-span-2 is-row-span-13 has-background-dark" style="min-width:200px; min-height:400px; border-radius:15px">
+                <h1 class="title is-1" style="margin:10px; text-align: center;">Välkommen till Teknikums Esport</h1>
+                <h1 class="subtitle is-3" id="liga" style="margin-top:50px"></h1>
+                <a id="TeknikumCS1-link" class="has-text-primary" style="cursor:pointer;font-size:larger;font-weight:bold; margin:20px;">1. Teknikum CS1</a><br>
+                <div id="TeknikumCS1-box" class="box mt-2" style="max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; display:none;">
+                    <p>Spelare:</p>
+                    <p>rogue</p>
+                    <p>Ankan</p>
+                    <p>Baggebom</p>
+                    <p>LDT</p>
+                    <p>Lajan</p>
+                </div>
+                <a id="TeknikumCS2-link" class="has-text-primary" style="cursor:pointer;font-size:larger;font-weight:bold; margin:20px;">2. Teknikum CS2</a><br>
+                <div id="TeknikumCS2-box" class="box mt-2" style="max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; display:none;">
+                    <p>Spelare:</p>
+                    <p>?</p>
+                    <p>?</p>
+                    <p>?</p>
+                    <p>?</p>
+                    <p>?</p>
+                </div>
+                <a id="TeknikumCS3-link" class="has-text-primary" style="cursor:pointer;font-size:larger;font-weight:bold; margin:20px;">3. Teknikum CS3</a><br>
+                <div id="TeknikumCS3-box" class="box mt-2" style="max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; display:none;">
+                    <p>Spelare:</p>
+                    <p>?</p>
+                    <p>?</p>
+                    <p>?</p>
+                    <p>?</p>
+                    <p>?</p>
+                </div>
+                <script>
+                    const today = new Date();
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    const formattedDate = today.toLocaleDateString(undefined, options);
 
-            <div class="cell">Cell 2</div>
+                    document.getElementById('liga').textContent = "Den " + formattedDate + " ser den interna tabellen inom CS ut så här: ";
+                </script>
+                <script>
+                    const togglecs1 = document.getElementById('TeknikumCS1-link');
+                    const boxcs1 = document.getElementById('TeknikumCS1-box');
+
+                    togglecs1.addEventListener('click', () => {
+                        const isVisible = boxcs1.style.display === 'block';
+                        boxcs1.style.display = isVisible ? 'none' : 'block';
+                        boxcs1.style.maxHeight = isVisible ? '0px' : boxcs1.scrollHeight + 'px';
+                        
+                    });
+                </script>
+                <script>
+                    const togglecs2 = document.getElementById('TeknikumCS2-link');
+                    const boxcs2 = document.getElementById('TeknikumCS2-box');
+
+                    togglecs2.addEventListener('click', () => {
+                        const isVisible = boxcs2.style.display === 'block';
+                        boxcs2.style.display = isVisible ? 'none' : 'block';
+                        boxcs2.style.maxHeight = isVisible ? '0px' : boxcs2.scrollHeight + 'px';
+                        
+                    });
+                </script>
+                <script>
+                    const togglecs3 = document.getElementById('TeknikumCS3-link');
+                    const boxcs3 = document.getElementById('TeknikumCS3-box');
+
+                    togglecs3.addEventListener('click', () => {
+                        const isVisible = boxcs3.style.display === 'block';
+                        boxcs3.style.display = isVisible ? 'none' : 'block';
+                        boxcs3.style.maxHeight = isVisible ? '0px' : boxcs3.scrollHeight + 'px';
+                        
+                    });
+                </script>
+            </div>
             <div class="cell">Cell 3</div>
             <div class="cell">Cell 4</div>
             <div class="cell">Cell 5</div>
@@ -80,6 +164,7 @@
             <div class="cell">Cell 18</div>
             <div class="cell">Cell 19</div>
             <div class="cell">Cell 20</div>
+            <div class="cell">Cell 21</div>
         </div>
     </div>
 </body>

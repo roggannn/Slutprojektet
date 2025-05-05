@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teknikum E-sport</title>
+    <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="fixed-grid has-2-cols">
+        <div class="grid">
+            <div class="cell is-col-span-2 is-row-span-4">
+                <div class="twentyPX">
+                    <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
+                        <div class="navbar-brand">
+                            <a href="index.html" class="navbar-item">
+                                <strong>Teknikum E-sport</strong>
+                            </a>
+                            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBase">
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                <span aria-hidden="true"></span>
+                                
+                            </a>
+                        </div>
+
+                        <div id="navbarBase" class="navbar-menu">
+                            <div class="navbar-start">
+                                <a href="index.html" class="navbar-item">
+                                    Startsida
+                                </a>
+
+                                <a href="taktiker.html" class="navbar-item">
+                                    Taktiker
+                                </a>
+
+                                <a href="#" class="navbar-item">
+                                    Matcher
+                                </a>
+
+                                <a href="#" class="navbar-item">
+                                    Mina sidor
+                                </a>
+
+                                <a href="#" class="navbar-item">
+                                    Forum
+                                </a>
+                            </div>
+                            <div class="navbar-end">
+                                <div class="navbar-item">
+                                    <div class="buttons">
+                                        <a href="#" class="button is-primary">
+                                            <strong>Sign up</strong>
+                                        </a>
+                                        <a href="#" class="button is-primary">
+                                            <strong>Log in</strong>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const burger = document.querySelector('.navbar-burger');
+                            const menu = document.getElementById(burger.dataset.target);
+
+                            burger.addEventListener('click', () => {
+                                burger.classList.toggle('is-active');
+                                menu.classList.toggle('is-active');
+                            })
+                        })
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
