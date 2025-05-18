@@ -36,6 +36,41 @@
     height:auto;
 }
 
+.map-kort{
+    margin-bottom: 2rem;
+}
+
+.map-bild img {
+    border-radius:8px;
+}
+
+.sido-sektion {
+    margin-top: 1rem; 
+}
+
+.taktik-kort{
+    margin-top: 1rem;
+    margin:15px;
+}
+
+.toggle-content{
+    overflow:hidden;
+    max-height: 0;
+    transition: max-height 0.4s ease;
+}
+
+.toggle-content.active{
+    max-height:1000px;
+}
+
+.toggle-btn{
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    user-select: none;
+}
+
 @media screen and (max-width: 768px) {
     .noahbox {
         width: 90%;
@@ -48,5 +83,10 @@
         margin: 10px auto;
         width: 100%;
         max-width: 200px;
+    }
+
+    .teamChart{
+        height: 300px;
+        width: 500px;
     }
 }

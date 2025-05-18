@@ -52,13 +52,16 @@
                             <div class="navbar-end">
                                 <div class="navbar-item">
                                     <div class="buttons">
+                                        <a class="button is-warning" id="theme-button">
+                                            <strong>𖤓</strong>
+                                        </a>
                                         <a class="button is-primary" id="signup-button">
-                                            <strong>Sign up</strong>
+                                            <strong>Registrera</strong>
                                         </a>
                                         <a class="button is-primary" id="login-button">
-                                            <strong>Log in</strong>
+                                            <strong>Logga in</strong>
                                         </a>
-                                        <a class="button is-danger is-hidden" id="logout-button">Log out</a>
+                                        <a class="button is-danger is-hidden" id="logout-button">Logga ut</a>
                                     </div>
                                 </div>
                             </div>
@@ -85,7 +88,7 @@
                                                 </div>
                                             </div>
                                             <div class="has-text-danger mb-2" id="login-error" style="display:none;">Ogiltigt login!</div>
-                                            <button class="button is-success" id="login-knappen">Login</button>
+                                            <button class="button is-success" id="login-knappen">Logga in</button>
                                         </div>
                                     </section>
                                 </div>
@@ -118,14 +121,42 @@
                                                     <input type="password" class="input" placeholder="Skapa ett lösenord">
                                                 </div>
                                             </div>
-                                            <button class="button is-success">Sign up</button>
+                                            <button class="button is-success">Registrera</button>
                                         </div>
                                     </section>
                                 </div>
                             </div>
 
-                            <div id="welcome-message" class="mt-5 is-size-4"></div>
+                            <div id="welcome-message" class="mt-5 is-size-4" style="justify-self: center;"></div>
                             
+                            <script>
+                                const toggleButton = document.getElementById('theme-button');
+                                const htmlElement = document.documentElement;
+                                const THEME_KEY = 'theme-preference';
+
+                                function applyTheme(theme) {
+                                    htmlElement.classList.remove('theme-dark', 'theme-light');
+                                    htmlElement.classList.add(theme);
+                                    toggleButton.textContent = theme === 'theme-dark' ? '𖤓' : '☾';
+                                }
+
+                                function loadThemeFromStorage() {
+                                    const storedTheme = localStorage.getItem(THEME_KEY);
+                                    if (storedTheme === 'theme-dark' || storedTheme === 'theme-light') {
+                                        applyTheme(storedTheme);
+                                    } else {
+                                        applyTheme('theme-light');
+                                    }
+                                }
+
+                                toggleButton.addEventListener('click', () => {
+                                    const newTheme = htmlElement.classList.contains('theme-dark') ? 'theme-light' : 'theme-dark';
+                                    applyTheme(newTheme);
+                                    localStorage.setItem(THEME_KEY, newTheme);
+                                });
+
+                                loadThemeFromStorage();
+                            </script>
 
                             <script>
                                 const users = [
@@ -142,10 +173,12 @@
                                 const logoutBtn = document.getElementById('logout-button');
                                 const errorMsg = document.getElementById("login-error");
                                 const welcome = document.getElementById('welcome-message');
+                                const signupbtn = document.getElementById('signup-button');
 
                                 function showWelcome(username) {
-                                    welcome.textContent = username;
+                                    welcome.textContent = "Inloggad som: " + username;
                                     logoutBtn.classList.remove('is-hidden');
+                                    signupbtn.classList.add('is-hidden');
                                     openBtnLogin.classList.add('is-hidden');
                                 }
 
@@ -153,6 +186,7 @@
                                     localStorage.removeItem('loggedInUser');
                                     welcome.textContent = '';
                                     logoutBtn.classList.add('is-hidden');
+                                    signupbtn.classList.remove('is-hidden');
                                     openBtnLogin.classList.remove('is-hidden');
                                 }
 
@@ -205,30 +239,178 @@
                     </script>
                 </div>
             </div>
-            <div class="cell is-col-span-2 is-row-span-13 has-background-dark" style="min-height:500px; width:80%; border-radius:15px; justify-self:center; margin-top:20px;">
+            <div class="cell is-col-span-2 is-row-span-13" style="min-height:500px; width:80%; border-radius:15px; justify-self:center; margin-top:20px; border: 3px solid gray">
                 <div class="noahbox">
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black"">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
                     <img src="Maps/ancient logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black"">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
                     <img src="Maps/mirage logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black"">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
                     <img src="Maps/dust2 logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black"">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
                     <img src="Maps/nuke logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black"">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
                     <img src="Maps/anubis logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black"">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
                     <img src="Maps/inferno logo.webp"/>
                 </figure>
                 <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
                     <img src="Maps/train logo.webp"/>
                 </figure>
                 </div>
+            </div>
+
+            <div class="cell is-col-span-2">
+                <section class="section">
+                <div class="container">
+                    <h1 class="title has-text-centered">CS2 Taktiker</h1>
+
+                    <div class="card map-kort">
+                        <header class="card-header">
+                            <p class="card-header-title">Dust 2</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column is-4 map-bild">
+                                    <figure class="image is-4by3">
+                                        <img src="https://via.placeholder.com/400x300?Text=Dust+2" alt="Dust2 Map">
+                                    </figure>
+                                </div>
+                                <div class="column is-8">
+                                    <div class="content">
+                                        <!-- CT Sida -->
+                                         <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('dust2-ct', this)">
+                                                CT-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="dust2-ct" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Long Kontroll</p>
+                                                        <p>Using crossfire from pit and car to hold long against T-side pushes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">B Site Ankare</p>
+                                                        <p>How to use early HE and molotovs to slow B rushes and maintain utility.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                         <!-- T Sida -->
+                                          <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('dust2-t', this)">
+                                                T-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="dust2-t" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid to B Split</p>
+                                                        <p>Coordinated attack through mid and tunnels with smokes and flashes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Catwalk Execute</p>
+                                                        <p>Using Xbox smoke, cat molotovs, and a quick A-site take from short.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slut Dust 2 -->
+
+                    <div class="card map-kort">
+                        <header class="card-header">
+                            <p class="card-header-title">Mirage</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column is-4 map-bild">
+                                    <figure class="image is-4by3">
+                                        <img src="https://via.placeholder.com/400x300?Text=Mirage" alt="Mirage Map">
+                                    </figure>
+                                </div>
+                                <div class="column is-8">
+                                    <div class="content">
+                                        <!-- CT Sida -->
+                                         <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('mirage-ct', this)">
+                                                CT-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="mirage-ct" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid kontroll</p>
+                                                        <p>Using crossfire from conn, short and window to hold mid against T-side pushes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">B Site Ankare</p>
+                                                        <p>How to use early HE and molotovs to slow B rushes and maintain utility.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                         <!-- T Sida -->
+                                          <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('mirage-t', this)">
+                                                T-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="mirage-t" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid to B Split</p>
+                                                        <p>Coordinated attack through mid and tunnels with smokes and flashes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Catwalk Execute</p>
+                                                        <p>Using window and connector smoke, molotovs, and a quick B-site take from short.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slut Mirage -->
+
+
+                </div>
+            </section>
+
+            <script>
+                function toggleSection(id, headerElement) {
+                    const content = document.getElementById(id);
+                    const arrow = headerElement.querySelector('span');
+
+                    content.classList.toggle('active');
+                    if (content.classList.contains('active')) {
+                        arrow.textContent = '▾';
+                    } else {
+                        arrow.textContent = '▸';
+                    }
+                }
+            </script>
             </div>
         </div>
     </div>

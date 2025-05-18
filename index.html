@@ -52,15 +52,178 @@
                             <div class="navbar-end">
                                 <div class="navbar-item">
                                     <div class="buttons">
-                                        <a href="#" class="button is-primary">
-                                            <strong>Sign up</strong>
+                                        <a class="button is-warning" id="theme-button">
+                                            <strong>𖤓</strong>
                                         </a>
-                                        <a href="#" class="button is-primary">
-                                            <strong>Log in</strong>
+                                        <a class="button is-primary" id="signup-button">
+                                            <strong>Registrera</strong>
                                         </a>
+                                        <a class="button is-primary" id="login-button">
+                                            <strong>Logga in</strong>
+                                        </a>
+                                        <a class="button is-danger is-hidden" id="logout-button">Logga ut</a>
                                     </div>
                                 </div>
                             </div>
+                            <div id="login-modal" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Konto</p>
+                                        <button class="delete" aria-label="close" id="close-login-modal"></button>
+                                    </header>
+
+                                    <section class="modal-card-body">
+                                        <div id="login-form">
+                                            <div class="field">
+                                                <label class="label">Användarnamn</label>
+                                                <div class="control">
+                                                    <input type="text" id="username" class="input" placeholder="Skriv in ditt användarnamn">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Lösenord</label>
+                                                <div class="control">
+                                                    <input type="password" id="password" class="input" placeholder="Skriv in ditt lösenord">
+                                                </div>
+                                            </div>
+                                            <div class="has-text-danger mb-2" id="login-error" style="display:none;">Ogiltigt login!</div>
+                                            <button class="button is-success" id="login-knappen">Logga in</button>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+                            <div id="signup-modal" class="modal">
+                                <div class="modal-background"></div>
+                                <div class="modal-card">
+                                    <header class="modal-card-head">
+                                        <p class="modal-card-title">Konto</p>
+                                        <button class="delete" aria-label="close" id="close-signup-modal"></button>
+                                    </header>
+
+                                    <section class="modal-card-body">
+                                        <div id="signup-form">
+                                            <div class="field">
+                                                <label class="label">Användarnamn</label>
+                                                <div class="control">
+                                                    <input type="text" class="input" placeholder="Välj ditt användarnamn">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Email</label>
+                                                <div class="control">
+                                                    <input type="email" class="input" placeholder="Skriv in din email">
+                                                </div>
+                                            </div>
+                                            <div class="field">
+                                                <label class="label">Lösenord</label>
+                                                <div class="control">
+                                                    <input type="password" class="input" placeholder="Skapa ett lösenord">
+                                                </div>
+                                            </div>
+                                            <button class="button is-success">Registrera</button>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+                            <div id="welcome-message" class="mt-5 is-size-4" style="text-align:center; justify-self:center;"></div>
+                            
+                            <script>
+                                const toggleButton = document.getElementById('theme-button');
+                                const htmlElement = document.documentElement;
+                                const THEME_KEY = 'theme-preference';
+
+                                function applyTheme(theme) {
+                                    htmlElement.classList.remove('theme-dark', 'theme-light');
+                                    htmlElement.classList.add(theme);
+                                    toggleButton.textContent = theme === 'theme-dark' ? '𖤓' : '☾';
+                                }
+
+                                function loadThemeFromStorage() {
+                                    const storedTheme = localStorage.getItem(THEME_KEY);
+                                    if (storedTheme === 'theme-dark' || storedTheme === 'theme-light') {
+                                        applyTheme(storedTheme);
+                                    } else {
+                                        applyTheme('theme-light');
+                                    }
+                                }
+
+                                toggleButton.addEventListener('click', () => {
+                                    const newTheme = htmlElement.classList.contains('theme-dark') ? 'theme-light' : 'theme-dark';
+                                    applyTheme(newTheme);
+                                    localStorage.setItem(THEME_KEY, newTheme);
+                                });
+
+                                loadThemeFromStorage();
+                            </script>
+
+                            <script>
+                                const users = [
+                                    { username: "admin", password: "User1234" },
+                                    { username: "rogue", password: "rogue1234" },
+                                    { username: "massiive", password: "massiive1234" }
+                                ];
+
+                                const openBtnLogin = document.getElementById('login-button');
+                                const closeBtnLogin = document.getElementById('close-login-modal');
+                                const loginmodal = document.getElementById('login-modal');
+                                const loginForm = document.getElementById('login-form');
+                                const loginBtn = document.getElementById('login-knappen');
+                                const logoutBtn = document.getElementById('logout-button');
+                                const errorMsg = document.getElementById("login-error");
+                                const welcome = document.getElementById('welcome-message');
+                                const signupbtn = document.getElementById('signup-button');
+
+                                function showWelcome(username) {
+                                    welcome.textContent = "Inloggad som: " + username;
+                                    logoutBtn.classList.remove('is-hidden');
+                                    signupbtn.classList.add('is-hidden');
+                                    openBtnLogin.classList.add('is-hidden');
+                                }
+
+                                function logout() {
+                                    localStorage.removeItem('loggedInUser');
+                                    welcome.textContent = '';
+                                    logoutBtn.classList.add('is-hidden');
+                                    signupbtn.classList.remove('is-hidden');
+                                    openBtnLogin.classList.remove('is-hidden');
+                                }
+
+                                openBtnLogin.onclick = () => loginmodal.classList.add('is-active');
+                                closeBtnLogin.onclick = () => loginmodal.classList.remove('is-active');
+                                
+                                loginBtn.onclick = () => {
+                                    const username = document.getElementById("username").value.trim();
+                                    const password = document.getElementById("password").value;
+                                    const validUser = users.find(u => u.username === username && u.password === password);
+
+                                    if (validUser) {
+                                        localStorage.setItem('loggedInUser', username);
+                                        errorMsg.style.display = 'none';
+                                        loginmodal.classList.remove('is-active');
+                                        showWelcome(username);
+                                    } else {
+                                        errorMsg.style.display = 'block';
+                                    }
+                                };
+
+                                logoutBtn.onclick = logout;
+
+                                const savedUser = localStorage.getItem('loggedInUser');
+                                if (savedUser) {
+                                    showWelcome(savedUser);
+                                }
+                            </script>
+                            <script>
+                                const openBtnSignup = document.getElementById('signup-button');
+                                const closeBtnSignup = document.getElementById('close-signup-modal');
+                                const signupmodal = document.getElementById('signup-modal');
+                                const signupForm = document.getElementById('signup-form');
+
+                                openBtnSignup.onclick = () => signupmodal.classList.add('is-active');
+                                closeBtnSignup.onclick = () => signupmodal.classList.remove('is-active');
+                            </script>
                         </div>
                     </nav>
                     <script>
@@ -149,7 +312,7 @@
             </div>
             <div class="cell is-col-span-2 is-row-span-13 has-background-dark" style="min-width:200px; min-height:300px; border-radius:15px; padding:10px; margin:10px; margin-top:150px;">
                 <h1 class="title" style="text-align: center;">Lag prestationer 2025</h1>
-                <canvas id="teamChart" width="500" height="300"></canvas>
+                <canvas id="teamChart" class="teamChart" width="500" height="150"></canvas>
 
                 <script>
                     const defaultData = {
