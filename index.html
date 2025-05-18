@@ -6,6 +6,7 @@
     <title>Teknikum E-sport</title>
     <link rel="stylesheet" href="node_modules/bulma/css/bulma.min.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <div class="fixed-grid has-2-cols">
@@ -110,7 +111,7 @@
                     const options = { year: 'numeric', month: 'long', day: 'numeric' };
                     const formattedDate = today.toLocaleDateString(undefined, options);
 
-                    document.getElementById('liga').textContent = "Den " + formattedDate + " ser den interna tabellen inom CS ut så här: ";
+                    document.getElementById('liga').textContent = formattedDate + " ser den interna tabellen inom CS ut så här: ";
                 </script>
                 <script>
                     const togglecs1 = document.getElementById('TeknikumCS1-link');
@@ -146,7 +147,59 @@
                     });
                 </script>
             </div>
-            <div class="cell">Cell 3</div>
+            <div class="cell is-col-span-2 is-row-span-13 has-background-dark" style="min-width:200px; min-height:300px; border-radius:15px; padding:10px; margin:10px; margin-top:150px;">
+                <h1 class="title" style="text-align: center;">Lag prestationer 2025</h1>
+                <canvas id="teamChart" width="500" height="300"></canvas>
+
+                <script>
+                    const defaultData = {
+                        labels: ["Vecka 1", "Vecka 2", "Vecka 3", "Vecka 4", "Vecka 5", "Vecka 6"],
+                        datasets: [
+                            {
+                                label: "Teknikum CS1",
+                                data: [10, 30, 50, 70, 90, 120],
+                                borderColor: "red",
+                                fill: false
+                            },
+                            {
+                                label: "Teknikum CS2",
+                                data: [5, 15, 25, 35, 45, 60],
+                                borderColor: "blue",
+                                fill: false
+                            },
+                            {
+                                label: "Teknikum CS3",
+                                data: [3, 9, 18, 27, 32, 42],
+                                borderColor: "green",
+                                fill: false
+                            }
+                        ]
+                    };
+
+                    if (!localStorage.getItem("teamChartData")) {
+                        localStorage.setItem("teamChartData", JSON.stringify(defaultData));
+                    }
+
+                    const chartData = JSON.parse(localStorage.getItem("teamChartData"));
+
+                    const ctx = document.getElementById("teamChart").getContext("2d");
+                    const chart = new Chart(ctx, {
+                        type: "line",
+                        data: {
+                            labels: chartData.labels,
+                            datasets: chartData.datasets
+                        },
+                        options: {
+                            responsive: true,
+                            scales: {
+                                y: {
+                                    stacked: false
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </div>
             <div class="cell">Cell 4</div>
             <div class="cell">Cell 5</div>
             <div class="cell">Cell 6</div>

@@ -16,3 +16,37 @@
     margin:0;
     color: green;
 }
+
+.noahbox{
+    display:flex;
+    align-items:center;
+    justify-content: space-evenly;
+    justify-self: center;
+    height:450px;
+    flex-wrap:wrap;
+    width:40%;
+    padding:0;
+}
+
+.noahbox figure{
+    margin-left:25px;
+    margin-right:25px;
+    margin-bottom:10px;
+    max-width:100%;
+    height:auto;
+}
+
+@media screen and (max-width: 768px) {
+    .noahbox {
+        width: 90%;
+        height: auto;
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .noahbox figure{
+        margin: 10px auto;
+        width: 100%;
+        max-width: 200px;
+    }
+}

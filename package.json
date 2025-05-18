@@ -17,6 +17,6 @@
   "homepage": "https://github.com/roggannn/Slutprojektet#readme",
   "description": "",
   "dependencies": {
-    "bulma": "^1.0.3"
+    "bulma": "^1.0.4"
   }
 }
