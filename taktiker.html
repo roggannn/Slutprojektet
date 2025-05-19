@@ -241,25 +241,25 @@
             </div>
             <div class="cell is-col-span-2 is-row-span-13" style="min-height:500px; width:80%; border-radius:15px; justify-self:center; margin-top:20px; border: 3px solid gray">
                 <div class="noahbox">
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black" onclick="scrollToSection('ancient-card')">
                     <img src="Maps/ancient logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black" onclick="scrollToSection('mirage-card')">
                     <img src="Maps/mirage logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black" onclick="scrollToSection('dust2-card')">
                     <img src="Maps/dust2 logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black" onclick="scrollToSection('nuke-card')">
                     <img src="Maps/nuke logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black" onclick="scrollToSection('anubis-card')">
                     <img src="Maps/anubis logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black" onclick="scrollToSection('inferno-card')">
                     <img src="Maps/inferno logo.webp"/>
                 </figure>
-                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black">
+                <figure class="image is-128x128" style="cursor:pointer; border: 1px solid black" onclick="scrollToSection('train-card')">
                     <img src="Maps/train logo.webp"/>
                 </figure>
                 </div>
@@ -268,9 +268,9 @@
             <div class="cell is-col-span-2">
                 <section class="section">
                 <div class="container">
-                    <h1 class="title has-text-centered">CS2 Taktiker</h1>
+                    <h1 class="title has-text-centered">Map Taktiker</h1>
 
-                    <div class="card map-kort">
+                    <div class="card map-kort" id="dust2-card">
                         <header class="card-header">
                             <p class="card-header-title">Dust 2</p>
                         </header>
@@ -278,7 +278,7 @@
                             <div class="columns">
                                 <div class="column is-4 map-bild">
                                     <figure class="image is-4by3">
-                                        <img src="https://via.placeholder.com/400x300?Text=Dust+2" alt="Dust2 Map">
+                                        <img src="Maps/Radars/dust2-radar.png" alt="Dust2 Map">
                                     </figure>
                                 </div>
                                 <div class="column is-8">
@@ -332,7 +332,7 @@
                     </div>
                     <!-- Slut Dust 2 -->
 
-                    <div class="card map-kort">
+                    <div class="card map-kort" id="mirage-card">
                         <header class="card-header">
                             <p class="card-header-title">Mirage</p>
                         </header>
@@ -340,7 +340,7 @@
                             <div class="columns">
                                 <div class="column is-4 map-bild">
                                     <figure class="image is-4by3">
-                                        <img src="https://via.placeholder.com/400x300?Text=Mirage" alt="Mirage Map">
+                                        <img src="Maps/Radars/mirage-radar.webp" alt="Mirage Map">
                                     </figure>
                                 </div>
                                 <div class="column is-8">
@@ -395,6 +395,322 @@
                     <!-- Slut Mirage -->
 
 
+                    <div class="card map-kort" id="ancient-card">
+                        <header class="card-header">
+                            <p class="card-header-title">Ancient</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column is-4 map-bild">
+                                    <figure class="image is-4by3">
+                                        <img src="Maps/Radars/ancient-radar.webp" alt="Ancient Map">
+                                    </figure>
+                                </div>
+                                <div class="column is-8">
+                                    <div class="content">
+                                        <!-- CT Sida -->
+                                         <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('ancient-ct', this)">
+                                                CT-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="ancient-ct" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid kontroll</p>
+                                                        <p>Using well-timed molotovs, nades and a smoke will result in easy takeover of mid.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">B Site Ankare</p>
+                                                        <p>How to use early HE and molotovs to slow B rushes and maintain utility.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                         <!-- T Sida -->
+                                          <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('ancient-t', this)">
+                                                T-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="ancient-t" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid till B-Split</p>
+                                                        <p>Coordinated attack through mid, redroom and donut with smokes and flashes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Donut A-split</p>
+                                                        <p>Using redroom and ct smoke, molotovs, and A-site will be yours for the taking.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slut Ancient -->
+
+
+                    <div class="card map-kort" id="anubis-card">
+                        <header class="card-header">
+                            <p class="card-header-title">Anubis</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column is-4 map-bild">
+                                    <figure class="image is-4by3">
+                                        <img src="Maps/Radars/anubis-radar.webp" alt="Anubis Map">
+                                    </figure>
+                                </div>
+                                <div class="column is-8">
+                                    <div class="content">
+                                        <!-- CT Sida -->
+                                         <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('anubis-ct', this)">
+                                                CT-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="anubis-ct" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid kontroll</p>
+                                                        <p>Using well-timed molotovs, nades and a smoke will result in easy takeover of mid.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">B Site Ankare</p>
+                                                        <p>How to use early HE and molotovs to slow B rushes and maintain utility.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                         <!-- T Sida -->
+                                          <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('anubis-t', this)">
+                                                T-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="anubis-t" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid till B-Split</p>
+                                                        <p>Coordinated attack through mid, temple and B-main/Connector with smokes, molotovs and flashes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Camera A-split</p>
+                                                        <p>Using temple smoke, well-timed flashes and A-site will be yours for the taking.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slut Anubis -->
+
+
+                    <div class="card map-kort" id="inferno-card">
+                        <header class="card-header">
+                            <p class="card-header-title">Inferno</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column is-4 map-bild">
+                                    <figure class="image is-4by3">
+                                        <img src="Maps/Radars/inferno-radar.png" alt="Inferno Map">
+                                    </figure>
+                                </div>
+                                <div class="column is-8">
+                                    <div class="content">
+                                        <!-- CT Sida -->
+                                         <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('inferno-ct', this)">
+                                                CT-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="inferno-ct" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid kontroll</p>
+                                                        <p>Using well-timed molotovs, nades and smokes will result in an easy hold of mid.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">B Site Ankare</p>
+                                                        <p>How to use good timed HE and molotovs to slow B rushes and maintain utility for as long as possible.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                         <!-- T Sida -->
+                                          <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('inferno-t', this)">
+                                                T-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="inferno-t" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Mid till B-Split</p>
+                                                        <p>Coordinated attack through mid, long and ct with smokes and alot of flashes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Camera A-split</p>
+                                                        <p>Using temple smoke, well-timed flashes and A-site will be yours for the taking.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slut Inferno -->
+
+
+                    <div class="card map-kort" id="train-card">
+                        <header class="card-header">
+                            <p class="card-header-title">Train</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column is-4 map-bild">
+                                    <figure class="image is-4by3">
+                                        <img src="Maps/Radars/train-radar.jpg" alt="Train Map">
+                                    </figure>
+                                </div>
+                                <div class="column is-8">
+                                    <div class="content">
+                                        <!-- CT Sida -->
+                                         <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('train-ct', this)">
+                                                CT-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="train-ct" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">A-main kontroll</p>
+                                                        <p>Using well-timed molotovs, nades and smokes will result in an easy hold of A and A-main.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">B Site Ankare</p>
+                                                        <p>How to use good timed HE and molotovs to slow B rushes and maintain utility for as long as possible.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                         <!-- T Sida -->
+                                          <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('train-t', this)">
+                                                T-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="train-t" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Pop/Ivy till B-Split</p>
+                                                        <p>Coordinated attack through A, Ivy and pop with smokes and alot of flashes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Pop A-split</p>
+                                                        <p>Using connector and camera smoke, well-timed flashes and A-site will be yours for the taking.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slut Train -->
+
+
+                    <div class="card map-kort" id="nuke-card">
+                        <header class="card-header">
+                            <p class="card-header-title">Nuke</p>
+                        </header>
+                        <div class="card-content">
+                            <div class="columns">
+                                <div class="column is-4 map-bild">
+                                    <figure class="image is-4by3">
+                                        <img src="Maps/Radars/nuke-radar.webp" alt="Nuke Map">
+                                    </figure>
+                                </div>
+                                <div class="column is-8">
+                                    <div class="content">
+                                        <!-- CT Sida -->
+                                         <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('nuke-ct', this)">
+                                                CT-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="nuke-ct" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Outside kontroll</p>
+                                                        <p>Using well-timed molotovs, nades and smokes will result in an relatively easy hold of outside.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Ramp Ankare</p>
+                                                        <p>How to use good timed HE, molotovs and smokes to slow B rushes and maintain utility for as long as possible.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                         </div>
+
+                                         <!-- T Sida -->
+                                          <div class="sido-sektion">
+                                            <h4 class="title is-5 toggle-btn" onclick="toggleSection('nuke-t', this)">
+                                                T-Sida <span>▸</span>
+                                            </h4>
+                                            <div id="nuke-t" class="toggle-content">
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Main till B-Split</p>
+                                                        <p>Coordinated attack through Main, Hut and Squeaky with smokes and alot of flashes.</p>
+                                                    </div>
+                                                </div>
+                                                <div class="card taktik-kort">
+                                                    <div class="card-content">
+                                                        <p class="title is-6">Main and Hut/Squeaky A-split</p>
+                                                        <p>Using heaven smoke, hut molotov and well-timed flashes and A-site will be yours for the taking.</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                          </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Slut Nuke -->
+
+
+
                 </div>
             </section>
 
@@ -411,6 +727,13 @@
                     }
                 }
             </script>
+            <script>
+                function scrollToSection(targetElement) {
+                    const target = document.getElementById(targetElement);
+                    target.scrollIntoView({ behavior: "smooth" }); // Smooth scroll
+                }
+            </script>
+
             </div>
         </div>
     </div>
