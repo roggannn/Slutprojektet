@@ -24,8 +24,9 @@
     justify-self: center;
     height:450px;
     flex-wrap:wrap;
-    width:40%;
-    padding:0;
+    width:40% auto;
+    padding:10px;
+    max-height:90%;
 }
 
 .noahbox figure{
