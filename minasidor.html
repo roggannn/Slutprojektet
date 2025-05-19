@@ -88,7 +88,7 @@
                                                 </div>
                                             </div>
                                             <div class="has-text-danger mb-2" id="login-error" style="display:none;">Ogiltigt login!</div>
-                                            <button class="button is-success" id="login-knappen">Logga in</button>
+                                            <button class="button is-success" id="login-knappen">Login</button>
                                         </div>
                                     </section>
                                 </div>
@@ -121,13 +121,13 @@
                                                     <input type="password" class="input" placeholder="Skapa ett lösenord">
                                                 </div>
                                             </div>
-                                            <button class="button is-success">Registrera</button>
+                                            <button class="button is-success">Sign up</button>
                                         </div>
                                     </section>
                                 </div>
                             </div>
 
-                            <div id="welcome-message" class="mt-5 is-size-4" style="text-align:center; justify-self:center;"></div>
+                            <div id="welcome-message" class="mt-5 is-size-4"></div>
                             
                             <script>
                                 const toggleButton = document.getElementById('theme-button');
@@ -176,7 +176,7 @@
                                 const signupbtn = document.getElementById('signup-button');
 
                                 function showWelcome(username) {
-                                    welcome.textContent = "Inloggad som: " + username;
+                                    welcome.textContent = username;
                                     logoutBtn.classList.remove('is-hidden');
                                     signupbtn.classList.add('is-hidden');
                                     openBtnLogin.classList.add('is-hidden');
@@ -239,155 +239,6 @@
                     </script>
                 </div>
             </div>
-            <div class="cell is-col-span-2 is-row-span-13 has-background-grey" style="min-width:200px; min-height:400px; border-radius:15px; border-top-right-radius: 0px; border-top-left-radius: 0px;">
-                <h1 class="title is-1" style="margin:10px; text-align: center;">Välkommen till Teknikums Esport</h1>
-                <h1 class="subtitle is-3" id="liga" style="margin-top:50px"></h1>
-                <a id="TeknikumCS1-link" class="has-text-primary" style="cursor:pointer;font-size:larger;font-weight:bold; margin:20px;">1. Teknikum CS1</a><br>
-                <div id="TeknikumCS1-box" class="box mt-2" style="max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; display:none;">
-                    <p>Spelare:</p>
-                    <p>rogue</p>
-                    <p>Ankan</p>
-                    <p>Baggebom</p>
-                    <p>LDT</p>
-                    <p>Lajan</p>
-                </div>
-                <a id="TeknikumCS2-link" class="has-text-primary" style="cursor:pointer;font-size:larger;font-weight:bold; margin:20px;">2. Teknikum CS2</a><br>
-                <div id="TeknikumCS2-box" class="box mt-2" style="max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; display:none;">
-                    <p>Spelare:</p>
-                    <p>?</p>
-                    <p>?</p>
-                    <p>?</p>
-                    <p>?</p>
-                    <p>?</p>
-                </div>
-                <a id="TeknikumCS3-link" class="has-text-primary" style="cursor:pointer;font-size:larger;font-weight:bold; margin:20px;">3. Teknikum CS3</a><br>
-                <div id="TeknikumCS3-box" class="box mt-2" style="max-height: 0; overflow: hidden; transition: max-height 0.2s ease-out; display:none;">
-                    <p>Spelare:</p>
-                    <p>?</p>
-                    <p>?</p>
-                    <p>?</p>
-                    <p>?</p>
-                    <p>?</p>
-                </div>
-                <script>
-                    const today = new Date();
-                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-                    const formattedDate = today.toLocaleDateString(undefined, options);
-
-                    document.getElementById('liga').textContent = formattedDate + " ser den interna tabellen inom CS ut så här: ";
-                </script>
-                <script>
-                    const togglecs1 = document.getElementById('TeknikumCS1-link');
-                    const boxcs1 = document.getElementById('TeknikumCS1-box');
-
-                    togglecs1.addEventListener('click', () => {
-                        const isVisible = boxcs1.style.display === 'block';
-                        boxcs1.style.display = isVisible ? 'none' : 'block';
-                        boxcs1.style.maxHeight = isVisible ? '0px' : boxcs1.scrollHeight + 'px';
-                        
-                    });
-                </script>
-                <script>
-                    const togglecs2 = document.getElementById('TeknikumCS2-link');
-                    const boxcs2 = document.getElementById('TeknikumCS2-box');
-
-                    togglecs2.addEventListener('click', () => {
-                        const isVisible = boxcs2.style.display === 'block';
-                        boxcs2.style.display = isVisible ? 'none' : 'block';
-                        boxcs2.style.maxHeight = isVisible ? '0px' : boxcs2.scrollHeight + 'px';
-                        
-                    });
-                </script>
-                <script>
-                    const togglecs3 = document.getElementById('TeknikumCS3-link');
-                    const boxcs3 = document.getElementById('TeknikumCS3-box');
-
-                    togglecs3.addEventListener('click', () => {
-                        const isVisible = boxcs3.style.display === 'block';
-                        boxcs3.style.display = isVisible ? 'none' : 'block';
-                        boxcs3.style.maxHeight = isVisible ? '0px' : boxcs3.scrollHeight + 'px';
-                        
-                    });
-                </script>
-            </div>
-            <div class="cell is-col-span-2 is-row-span-13 has-background-grey-light" style="min-width:200px; min-height:500px; border-radius:15px; padding:10px; margin:10px; margin-top:150px; max-height:800px">
-                <h1 class="title" style="text-align: center;">Lag prestationer 2025</h1>
-                <canvas id="teamChart" class="teamChart" width="500" height="150"></canvas>
-
-                <script>
-                    const defaultData = {
-                        labels: ["Vecka 1", "Vecka 2", "Vecka 3", "Vecka 4", "Vecka 5", "Vecka 6"],
-                        datasets: [
-                            {
-                                label: "Teknikum CS1",
-                                data: [10, 30, 50, 70, 90, 120],
-                                borderColor: "red",
-                                fill: false
-                            },
-                            {
-                                label: "Teknikum CS2",
-                                data: [5, 15, 25, 35, 45, 60],
-                                borderColor: "blue",
-                                fill: false
-                            },
-                            {
-                                label: "Teknikum CS3",
-                                data: [3, 9, 18, 27, 32, 42],
-                                borderColor: "green",
-                                fill: false
-                            }
-                        ]
-                    };
-
-                    if (!localStorage.getItem("teamChartData")) {
-                        localStorage.setItem("teamChartData", JSON.stringify(defaultData));
-                    }
-
-                    const chartData = JSON.parse(localStorage.getItem("teamChartData"));
-
-                    const ctx = document.getElementById("teamChart").getContext("2d");
-                    const chart = new Chart(ctx, {
-                        type: "line",
-                        data: {
-                            labels: chartData.labels,
-                            datasets: chartData.datasets
-                        },
-                        options: {
-                            responsive: true,
-                            maintainAspectRatio: false,
-                            scales: {
-                                x: {
-                                    ticks: {
-                                        maxRotation: 45,
-                                        minRotation: 30
-                                    }
-                                },
-                                y: {
-                                    stacked: false
-                                }
-                            }
-                        }
-                    });
-                </script>
-            </div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell"></div>
-            <div class="cell">Cell 10</div>
-            <div class="cell">Cell 11</div>
-            <div class="cell">Cell 12</div>
-            <div class="cell">Cell 13</div>
-            <div class="cell">Cell 14</div>
-            <div class="cell">Cell 15</div>
-            <div class="cell">Cell 16</div>
-            <div class="cell">Cell 17</div>
-            <div class="cell">Cell 18</div>
-            <div class="cell">Cell 19</div>
-            <div class="cell">Cell 20</div>
-            <div class="cell">Cell 21</div>
         </div>
     </div>
 </body>
