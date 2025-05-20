@@ -72,6 +72,14 @@
     user-select: none;
 }
 
+.theme-light .has-background-themed{
+    background-color: --bulma-title-color;
+}
+
+.theme-dark .has-background-themed{
+    background-color: --bulma-title-color;
+}
+
 @media screen and (max-width: 768px) {
     .noahbox {
         width: 90%;

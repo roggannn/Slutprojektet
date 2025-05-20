@@ -131,32 +131,34 @@
                             <div id="welcome-message" class="mt-5 is-size-4" style="text-align:center; justify-self:center;"></div>
                             
                             <script>
-                                const toggleButton = document.getElementById('theme-button');
-                                const htmlElement = document.documentElement;
-                                const THEME_KEY = 'theme-preference';
-
-                                function applyTheme(theme) {
-                                    htmlElement.classList.remove('theme-dark', 'theme-light');
-                                    htmlElement.classList.add(theme);
-                                    toggleButton.textContent = theme === 'theme-dark' ? '☼' : '☾';
+                                const themeToggleButton = document.getElementById('theme-button');
+                                
+                                function applyTheme(theme){
+                                    const html = document.documentElement;
+                                    html.classList.remove('theme-light', 'theme-dark');
+                                    html.classList.add(theme);
+                                    localStorage.setItem('theme', theme);
                                 }
 
-                                function loadThemeFromStorage() {
-                                    const storedTheme = localStorage.getItem(THEME_KEY);
-                                    if (storedTheme === 'theme-dark' || storedTheme === 'theme-light') {
-                                        applyTheme(storedTheme);
-                                    } else {
-                                        applyTheme('theme-light');
-                                    }
-                                }
-
-                                toggleButton.addEventListener('click', () => {
-                                    const newTheme = htmlElement.classList.contains('theme-dark') ? 'theme-light' : 'theme-dark';
+                                function toggleTheme() {
+                                    const currentTheme = document.documentElement.classList.contains('theme-dark') ? 'theme-dark' : 'theme-light';
+                                    const newTheme = currentTheme === 'theme-dark' ? 'theme-light' : 'theme-dark';
                                     applyTheme(newTheme);
-                                    localStorage.setItem(THEME_KEY, newTheme);
+                                }
+
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const savedTheme = localStorage.getItem('theme') || 'theme-light';
+                                    applyTheme(savedTheme);
+
+                                    const button = document.getElementById('theme-toggle');
+                                    if (button) {
+                                        button.textContent = savedTheme === 'theme-dark' ? 'Light Mode' : 'Dark Mode';
+                                    }
                                 });
 
-                                loadThemeFromStorage();
+                                if (themeToggleButton) {
+                                    themeToggleButton.addEventListener('click', toggleTheme);
+                                }
                             </script>
 
                             <script>
@@ -240,7 +242,7 @@
                     </script>
                 </div>
             </div>
-            <div class="cell is-col-span-2 is-row-span-13 has-background-grey" style="min-width:200px; min-height:400px; border-radius:15px; border-top-right-radius: 0px; border-top-left-radius: 0px;">
+            <div class="cell is-col-span-2 is-row-span-13 has-background-themed" style="min-width:200px; min-height:400px; border-radius:15px; border-top-right-radius: 0px; border-top-left-radius: 0px;">
                 <h1 class="title is-1" style="margin:10px; text-align: center;">Välkommen till Teknikums Esport</h1>
                 <h1 class="subtitle is-3" id="liga" style="margin-top:50px"></h1>
                 <a id="TeknikumCS1-link" class="has-text-primary" style="cursor:pointer;font-size:larger;font-weight:bold; margin:20px;">1. Teknikum CS1</a><br>
@@ -311,7 +313,7 @@
                     });
                 </script>
             </div>
-            <div class="cell is-col-span-2 is-row-span-13 has-background-grey-light" style="min-width:200px; min-height:500px; border-radius:15px; padding:10px; margin:10px; margin-top:150px; max-height:800px">
+            <div id="teamChartBox" class="cell is-col-span-2 is-row-span-13 has-background-themed" style="min-width:200px; min-height:500px; border-radius:15px; padding:10px; margin:10px; margin-top:150px; max-height:800px">
                 <h1 class="title" style="text-align: center;">Lag prestationer 2025</h1>
                 <canvas id="teamChart" class="teamChart" width="500" height="150"></canvas>
 
