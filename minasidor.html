@@ -160,61 +160,74 @@
                             </script>
 
                             <script>
-                                const users = [
-                                    { username: "admin", password: "User1234" },
-                                    { username: "rogue", password: "rogue1234" },
-                                    { username: "massiive", password: "massiive1234" }
-                                ];
+                                let users = [];
 
-                                const openBtnLogin = document.getElementById('login-button');
-                                const closeBtnLogin = document.getElementById('close-login-modal');
-                                const loginmodal = document.getElementById('login-modal');
-                                const loginForm = document.getElementById('login-form');
-                                const loginBtn = document.getElementById('login-knappen');
-                                const logoutBtn = document.getElementById('logout-button');
-                                const errorMsg = document.getElementById("login-error");
-                                const welcome = document.getElementById('welcome-message');
-                                const signupbtn = document.getElementById('signup-button');
+                                fetch('users.json')
+                                    .then(response => {
+                                        if(!response.ok) throw new Error("Failed to load users.json");
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        users = data;
+                                    })
+                                    .catch(err => {
+                                        console.error("Error loading users", err);
+                                    });
 
-                                function showWelcome(username) {
-                                    welcome.textContent = username;
-                                    logoutBtn.classList.remove('is-hidden');
-                                    signupbtn.classList.add('is-hidden');
-                                    openBtnLogin.classList.add('is-hidden');
-                                }
+                                    const openBtnLogin = document.getElementById('login-button');
+                                    const closeBtnLogin = document.getElementById('close-login-modal');
+                                    const loginmodal = document.getElementById('login-modal');
+                                    const loginForm = document.getElementById('login-form');
+                                    const loginBtn = document.getElementById('login-knappen');
+                                    const logoutBtn = document.getElementById('logout-button');
+                                    const errorMsg = document.getElementById("login-error");
+                                    const welcome = document.getElementById('welcome-message');
+                                    const signupbtn = document.getElementById('signup-button');
 
-                                function logout() {
-                                    localStorage.removeItem('loggedInUser');
-                                    welcome.textContent = '';
-                                    logoutBtn.classList.add('is-hidden');
-                                    signupbtn.classList.remove('is-hidden');
-                                    openBtnLogin.classList.remove('is-hidden');
-                                }
 
-                                openBtnLogin.onclick = () => loginmodal.classList.add('is-active');
-                                closeBtnLogin.onclick = () => loginmodal.classList.remove('is-active');
-                                
-                                loginBtn.onclick = () => {
-                                    const username = document.getElementById("username").value.trim();
-                                    const password = document.getElementById("password").value;
-                                    const validUser = users.find(u => u.username === username && u.password === password);
-
-                                    if (validUser) {
-                                        localStorage.setItem('loggedInUser', username);
-                                        errorMsg.style.display = 'none';
-                                        loginmodal.classList.remove('is-active');
-                                        showWelcome(username);
-                                    } else {
-                                        errorMsg.style.display = 'block';
+                                    function showWelcome(username) {
+                                        welcome.textContent = `Inloggad som : ${username}`;
+                                        logoutBtn.classList.remove('is-hidden');
+                                        signupbtn.classList.add('is-hidden');
+                                        openBtnLogin.classList.add('is-hidden');
+                                        
                                     }
-                                };
 
-                                logoutBtn.onclick = logout;
+                                    function logout() {
+                                        localStorage.removeItem('loggedInUser');
+                                        welcome.textContent = "";
+                                        logoutBtn.classList.add('is-hidden');
+                                        signupbtn.classList.remove('is-hidden');
+                                        openBtnLogin.classList.remove('is-hidden');
+                                    }
 
-                                const savedUser = localStorage.getItem('loggedInUser');
-                                if (savedUser) {
-                                    showWelcome(savedUser);
-                                }
+                                    openBtnLogin.onclick = () => loginmodal.classList.add('is-active');
+                                    closeBtnLogin.onclick = () => loginmodal.classList.remove('is-active');
+
+                                    loginBtn.onclick = () => {
+                                        const username = document.getElementById("username").value.trim();
+                                        const password = document.getElementById("password").value;
+
+                                        const validUser = users.find(u => u.username === username && u.password === password);
+
+                                        if (validUser) {
+                                            localStorage.setItem('loggedInUser', username);
+                                            errorMsg.style.display = 'none';
+                                            loginmodal.classList.remove('is-active');
+                                            showWelcome(username);
+                                            window.location.reload();
+                                        } else {
+                                            errorMsg.style.display = 'block';
+                                        }
+                                    };
+
+                                    logoutBtn.onclick = logout;
+
+                                    const savedUser = localStorage.getItem('loggedInUser');
+                                    if (savedUser) {
+                                        showWelcome(savedUser);
+                                    }
+
                             </script>
                             <script>
                                 const openBtnSignup = document.getElementById('signup-button');
@@ -240,6 +253,67 @@
                     </script>
                 </div>
             </div>
+            <section class="section">
+                <div class="container">
+                    <h1 class="title">Välkommen till din personliga sida!</h1>
+
+                    <div class="box user-content" data-username="rogue">
+                        <h2 class="subtitle"><strong>Fokus områden</strong></h2>
+                        <div class="box is-flex is-flex-wrap-wrap is-flex-direction-column" style="max-width:24em;">
+                            <h3 class="subtitle" style="text-align: center;">Counter-strafing</h3>
+                            <div class="block is-flex is-flex-direction-row" style="width:100%;justify-content: space-evenly;">
+                                <div class="box" style="width:8em; height: 8em; margin:10px"><p>Min rating</p><h2 class="subtitle">76 Avg</h2></div>
+                                <div class="box" style="width:8em; height: 8em; margin:10px"><p>Mål</p><h2 class="subtitle">89 Avg</h2></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box user-content" data-username="massiive">
+                        <h2 class="subtitle">rogue</h2>
+                        <p>Detta är din personliga sida där du kan se vad du behöver förbättra och vad du är bra på!</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <script>
+                let username;
+                if (typeof username === 'undefined'){
+                    const welcomeText = document.getElementById('welcome-message')?.textContent || "";
+                    username = welcomeText.replace("Inloggad som : ", "").trim().toLowerCase();
+                    console.log(username);
+                }
+
+                document.querySelectorAll('.user-content').forEach(block => {
+                    const targetUser = block.getAttribute('data-username').toLowerCase();
+                    if (targetUser === username) {
+                        block.classList.remove('hidden');
+                    }   else if (targetUser === 'default' && !document.querySelector(`.user-content[data-username="${username}"]`)){
+                        block.classList.remove('hidden');
+                    } else {
+                        block.classList.add('hidden');
+                    }
+                })
+
+                function checkusername(){
+                    if (typeof username === 'undefined'){
+                    const welcomeText = document.getElementById('welcome-message')?.textContent || "";
+                    username = welcomeText.replace("Inloggad som : ", "").trim().toLowerCase();
+                    console.log(username);
+                }
+
+                document.querySelectorAll('.user-content').forEach(block => {
+                    const targetUser = block.getAttribute('data-username').toLowerCase();
+                    if (targetUser === username) {
+                        block.classList.remove('hidden');
+                    }   else if (targetUser === 'default' && !document.querySelector(`.user-content[data-username="${username}"]`)){
+                        block.classList.remove('hidden');
+                    } else {
+                        block.classList.add('hidden');
+                    }
+                })
+                }
+            </script>
         </div>
     </div>
 </body>
