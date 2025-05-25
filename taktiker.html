@@ -38,7 +38,7 @@
                                     Taktiker
                                 </a>
 
-                                <a href="#" class="navbar-item">
+                                <a href="matcher.html" class="navbar-item">
                                     Matcher
                                 </a>
 
@@ -46,7 +46,7 @@
                                     Mina sidor
                                 </a>
 
-                                <a href="#" class="navbar-item">
+                                <a href="forum.html" class="navbar-item">
                                     Forum
                                 </a>
                             </div>
@@ -131,33 +131,35 @@
                             <div id="welcome-message" class="mt-5 is-size-4" style="justify-self: center;"></div>
                             
                             <script>
-                                const toggleButton = document.getElementById('theme-button');
-                                const htmlElement = document.documentElement;
-                                const THEME_KEY = 'theme-preference';
-
-                                function applyTheme(theme) {
-                                    htmlElement.classList.remove('theme-dark', 'theme-light');
-                                    htmlElement.classList.add(theme);
-                                    toggleButton.textContent = theme === 'theme-dark' ? '☼' : '☾';
+                                const themeToggleButton = document.getElementById('theme-button');
+                                
+                                function applyTheme(theme){
+                                    const html = document.documentElement;
+                                    html.classList.remove('theme-light', 'theme-dark');
+                                    html.classList.add(theme);
+                                    localStorage.setItem('theme', theme);
                                 }
 
-                                function loadThemeFromStorage() {
-                                    const storedTheme = localStorage.getItem(THEME_KEY);
-                                    if (storedTheme === 'theme-dark' || storedTheme === 'theme-light') {
-                                        applyTheme(storedTheme);
-                                    } else {
-                                        applyTheme('theme-light');
-                                    }
-                                }
-
-                                toggleButton.addEventListener('click', () => {
-                                    const newTheme = htmlElement.classList.contains('theme-dark') ? 'theme-light' : 'theme-dark';
+                                function toggleTheme() {
+                                    const currentTheme = document.documentElement.classList.contains('theme-dark') ? 'theme-dark' : 'theme-light';
+                                    const newTheme = currentTheme === 'theme-dark' ? 'theme-light' : 'theme-dark';
                                     applyTheme(newTheme);
-                                    localStorage.setItem(THEME_KEY, newTheme);
+                                }
+
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const savedTheme = localStorage.getItem('theme') || 'theme-light';
+                                    applyTheme(savedTheme);
+
+                                    const button = document.getElementById('theme-toggle');
+                                    if (button) {
+                                        button.textContent = savedTheme === 'theme-dark' ? 'Light Mode' : 'Dark Mode';
+                                    }
                                 });
 
-                                loadThemeFromStorage();
-                            </script>
+                                if (themeToggleButton) {
+                                    themeToggleButton.addEventListener('click', toggleTheme);
+                                }
+                            </script>   
 
                             <script>
                                 const users = [

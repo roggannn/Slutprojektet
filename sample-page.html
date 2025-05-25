@@ -38,15 +38,15 @@
                                     Taktiker
                                 </a>
 
-                                <a href="#" class="navbar-item">
+                                <a href="matcher.html" class="navbar-item">
                                     Matcher
                                 </a>
 
-                                <a href="#" class="navbar-item">
+                                <a href="minasidor.html" class="navbar-item">
                                     Mina sidor
                                 </a>
 
-                                <a href="#" class="navbar-item">
+                                <a href="forum.html" class="navbar-item">
                                     Forum
                                 </a>
                             </div>
@@ -131,90 +131,105 @@
                             <div id="welcome-message" class="mt-5 is-size-4"></div>
                             
                             <script>
-                                const toggleButton = document.getElementById('theme-button');
-                                const htmlElement = document.documentElement;
-                                const THEME_KEY = 'theme-preference';
-
-                                function applyTheme(theme) {
-                                    htmlElement.classList.remove('theme-dark', 'theme-light');
-                                    htmlElement.classList.add(theme);
-                                    toggleButton.textContent = theme === 'theme-dark' ? '☼' : '☾';
+                                const themeToggleButton = document.getElementById('theme-button');
+                                
+                                function applyTheme(theme){
+                                    const html = document.documentElement;
+                                    html.classList.remove('theme-light', 'theme-dark');
+                                    html.classList.add(theme);
+                                    localStorage.setItem('theme', theme);
                                 }
 
-                                function loadThemeFromStorage() {
-                                    const storedTheme = localStorage.getItem(THEME_KEY);
-                                    if (storedTheme === 'theme-dark' || storedTheme === 'theme-light') {
-                                        applyTheme(storedTheme);
-                                    } else {
-                                        applyTheme('theme-light');
-                                    }
-                                }
-
-                                toggleButton.addEventListener('click', () => {
-                                    const newTheme = htmlElement.classList.contains('theme-dark') ? 'theme-light' : 'theme-dark';
+                                function toggleTheme() {
+                                    const currentTheme = document.documentElement.classList.contains('theme-dark') ? 'theme-dark' : 'theme-light';
+                                    const newTheme = currentTheme === 'theme-dark' ? 'theme-light' : 'theme-dark';
                                     applyTheme(newTheme);
-                                    localStorage.setItem(THEME_KEY, newTheme);
+                                }
+
+                                document.addEventListener('DOMContentLoaded', () => {
+                                    const savedTheme = localStorage.getItem('theme') || 'theme-light';
+                                    applyTheme(savedTheme);
+
+                                    const button = document.getElementById('theme-toggle');
+                                    if (button) {
+                                        button.textContent = savedTheme === 'theme-dark' ? 'Light Mode' : 'Dark Mode';
+                                    }
                                 });
 
-                                loadThemeFromStorage();
+                                if (themeToggleButton) {
+                                    themeToggleButton.addEventListener('click', toggleTheme);
+                                }
                             </script>
 
                             <script>
-                                const users = [
-                                    { username: "admin", password: "User1234" },
-                                    { username: "rogue", password: "rogue1234" },
-                                    { username: "massiive", password: "massiive1234" }
-                                ];
+                                let users = [];
 
-                                const openBtnLogin = document.getElementById('login-button');
-                                const closeBtnLogin = document.getElementById('close-login-modal');
-                                const loginmodal = document.getElementById('login-modal');
-                                const loginForm = document.getElementById('login-form');
-                                const loginBtn = document.getElementById('login-knappen');
-                                const logoutBtn = document.getElementById('logout-button');
-                                const errorMsg = document.getElementById("login-error");
-                                const welcome = document.getElementById('welcome-message');
-                                const signupbtn = document.getElementById('signup-button');
+                                fetch('users.json')
+                                    .then(response => {
+                                        if(!response.ok) throw new Error("Failed to load users.json");
+                                        return response.json();
+                                    })
+                                    .then(data => {
+                                        users = data;
+                                    })
+                                    .catch(err => {
+                                        console.error("Error loading users", err);
+                                    });
 
-                                function showWelcome(username) {
-                                    welcome.textContent = username;
-                                    logoutBtn.classList.remove('is-hidden');
-                                    signupbtn.classList.add('is-hidden');
-                                    openBtnLogin.classList.add('is-hidden');
-                                }
+                                    const openBtnLogin = document.getElementById('login-button');
+                                    const closeBtnLogin = document.getElementById('close-login-modal');
+                                    const loginmodal = document.getElementById('login-modal');
+                                    const loginForm = document.getElementById('login-form');
+                                    const loginBtn = document.getElementById('login-knappen');
+                                    const logoutBtn = document.getElementById('logout-button');
+                                    const errorMsg = document.getElementById("login-error");
+                                    const welcome = document.getElementById('welcome-message');
+                                    const signupbtn = document.getElementById('signup-button');
 
-                                function logout() {
-                                    localStorage.removeItem('loggedInUser');
-                                    welcome.textContent = '';
-                                    logoutBtn.classList.add('is-hidden');
-                                    signupbtn.classList.remove('is-hidden');
-                                    openBtnLogin.classList.remove('is-hidden');
-                                }
 
-                                openBtnLogin.onclick = () => loginmodal.classList.add('is-active');
-                                closeBtnLogin.onclick = () => loginmodal.classList.remove('is-active');
-                                
-                                loginBtn.onclick = () => {
-                                    const username = document.getElementById("username").value.trim();
-                                    const password = document.getElementById("password").value;
-                                    const validUser = users.find(u => u.username === username && u.password === password);
-
-                                    if (validUser) {
-                                        localStorage.setItem('loggedInUser', username);
-                                        errorMsg.style.display = 'none';
-                                        loginmodal.classList.remove('is-active');
-                                        showWelcome(username);
-                                    } else {
-                                        errorMsg.style.display = 'block';
+                                    function showWelcome(username) {
+                                        welcome.textContent = `Inloggad som : ${username}`;
+                                        logoutBtn.classList.remove('is-hidden');
+                                        signupbtn.classList.add('is-hidden');
+                                        openBtnLogin.classList.add('is-hidden');
+                                        
                                     }
-                                };
 
-                                logoutBtn.onclick = logout;
+                                    function logout() {
+                                        localStorage.removeItem('loggedInUser');
+                                        welcome.textContent = "";
+                                        logoutBtn.classList.add('is-hidden');
+                                        signupbtn.classList.remove('is-hidden');
+                                        openBtnLogin.classList.remove('is-hidden');
+                                    }
 
-                                const savedUser = localStorage.getItem('loggedInUser');
-                                if (savedUser) {
-                                    showWelcome(savedUser);
-                                }
+                                    openBtnLogin.onclick = () => loginmodal.classList.add('is-active');
+                                    closeBtnLogin.onclick = () => loginmodal.classList.remove('is-active');
+
+                                    loginBtn.onclick = () => {
+                                        const username = document.getElementById("username").value.trim();
+                                        const password = document.getElementById("password").value;
+
+                                        const validUser = users.find(u => u.username === username && u.password === password);
+
+                                        if (validUser) {
+                                            localStorage.setItem('loggedInUser', username);
+                                            errorMsg.style.display = 'none';
+                                            loginmodal.classList.remove('is-active');
+                                            showWelcome(username);
+                                            window.location.reload();
+                                        } else {
+                                            errorMsg.style.display = 'block';
+                                        }
+                                    };
+
+                                    logoutBtn.onclick = logout;
+
+                                    const savedUser = localStorage.getItem('loggedInUser');
+                                    if (savedUser) {
+                                        showWelcome(savedUser);
+                                    }
+
                             </script>
                             <script>
                                 const openBtnSignup = document.getElementById('signup-button');
@@ -240,6 +255,7 @@
                     </script>
                 </div>
             </div>
+            
         </div>
     </div>
 </body>

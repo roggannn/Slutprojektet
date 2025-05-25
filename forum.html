@@ -201,7 +201,6 @@
                                         logoutBtn.classList.add('is-hidden');
                                         signupbtn.classList.remove('is-hidden');
                                         openBtnLogin.classList.remove('is-hidden');
-                                        window.location.reload();
                                     }
 
                                     openBtnLogin.onclick = () => loginmodal.classList.add('is-active');
@@ -256,162 +255,95 @@
                     </script>
                 </div>
             </div>
-            <section class="section">
+
+            <section class="cell is-col-span-2">
                 <div class="container">
-                    
-                    <div class="box user-content" data-username="rogue" style="min-width:fit-content;">
-                        <h2 class="subtitle"><strong>Fokus områden</strong></h2>
-                        <div class="block is-flex noah-is-flex-direction" style="gap: 3em;">
-                            <div class="box is-flex is-flex-wrap-wrap is-flex-direction-column" id="lada" style="max-width:24em; height:15em;">
-                                <h3 class="subtitle" style="text-align: center;">Counter-strafing</h3>
-                                <div class="block is-flex is-flex-direction-row" style="width:100%;justify-content: space-evenly;">
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Min rating</p><h2 class="subtitle">76 Avg</h2></div>
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Mål</p><h2 class="subtitle">89 Avg</h2></div>
-                                </div>
-                            </div>
-                            
-                            <div class="box is-flex is-flex-wrap-wrap is-flex-direction-column" id="lada" style="max-width:24em; height:15em;">
-                                <h3 class="subtitle" style="text-align: center;">Utility</h3>
-                                <div class="block is-flex is-flex-direction-row" style="width:100%;justify-content: space-evenly;">
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Min rating</p><h2 class="subtitle">89 Avg</h2></div>
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Mål</p><h2 class="subtitle">85 Avg</h2></div>
+                    <h1 class="title has-text-centered">Forum</h1>
+
+                    <!-- Forum Post Form -->
+                    <div class="box">
+                        <form id="forum-form">
+                            <div class="field">
+                                <label class="label">Namn</label>
+                                <div class="control">
+                                    <input class="input" type="text" id="author" placeholder="Ditt namn" required>
                                 </div>
                             </div>
 
-                            <div class="box is-flex is-flex-wrap-wrap is-flex-direction-column" id="lada" style="max-width:24em; height:15em;">
-                                <h3 class="subtitle" style="text-align: center;">Positioning</h3>
-                                <div class="block is-flex is-flex-direction-row" style="width:100%;justify-content: space-evenly;">
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Min rating</p><h2 class="subtitle">69 Avg</h2></div>
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Mål</p><h2 class="subtitle">73 Avg</h2></div>
+                            <div class="field">
+                                <label class="label">Meddelande</label>
+                                <div class="control">
+                                    <textarea class="textarea" id="message" placeholder="Skriv ditt meddelande..." required></textarea>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="block is-flex is-flex-direction-column" style="gap:0; padding:0; margin:0;">
-                            <div class="block is-flex" style="gap:1em; align-content:center;height:2em;">
-                                <h2 class="subtitle" style="padding:0;margin-bottom:0.2em;align-self:center;">rogue</h2>
-                                <div class="box is-flex" style="width:100px; padding:0; justify-content:left; align-items:center;">
-                                    <div class="box is-flex" style="height:100%; margin:0; gap:0; width:50%; padding:0; justify-content:center; align-items:center;">
-                                        <p>HLTV:</p>
-                                    </div>
-                                    <p style="margin-left:0.65em;"><strong>1.41</strong></p>
+                            <div class="field is-grouped is-justify-content-flex-end">
+                                <div class="control">
+                                    <button class="button is-primary" type="submit">Post</button>
                                 </div>
                             </div>
-                            <div class="block is-flex" style="gap:1em; align-content:center;height:1.5em;">
-                                <p style="width:max-content">FAV Vapen</p>
-                                <div class="box is-flex" style="width:max-content; padding:0; justify-content:center; align-items:center; padding:0.3em;">
-                                    <p>AK | M4 | USP | Deagle | Glock</p>
-                                </div>
-                            </div>
-                            <div class="block is-flex is-flex-direction-column" style="justify-self: left;gap:0.5em">
-                                <p style="text-align: left; text-decoration: underline;"><strong>Din bästa karta</strong></p>
-                                <figure class="image is-128x128 hoverable">
-                                    <img src="Maps/mirage.png" alt="Mirage" style="border:1px black solid">
-                                </figure>
-                            </div>
-                        </div>
-
+                        </form>
                     </div>
 
-                    <div class="box user-content" data-username="massiive">
-                        <h2 class="subtitle"><strong>Fokus områden</strong></h2>
-                        <div class="block is-flex noah-is-flex-direction" style="gap: 3em;">
-                            <div class="box is-flex is-flex-wrap-wrap is-flex-direction-column" id="lada" style="max-width:24em; height:15em;">
-                                <h3 class="subtitle" style="text-align: center;">Counter-strafing</h3>
-                                <div class="block is-flex is-flex-direction-row" style="width:100%;justify-content: space-evenly;">
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Min rating</p><h2 class="subtitle">76 Avg</h2></div>
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Mål</p><h2 class="subtitle">89 Avg</h2></div>
-                                </div>
-                            </div>
-                            
-                            <div class="box is-flex is-flex-wrap-wrap is-flex-direction-column" id="lada" style="max-width:24em; height:15em;">
-                                <h3 class="subtitle" style="text-align: center;">Utility</h3>
-                                <div class="block is-flex is-flex-direction-row" style="width:100%;justify-content: space-evenly;">
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Min rating</p><h2 class="subtitle">89 Avg</h2></div>
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Mål</p><h2 class="subtitle">85 Avg</h2></div>
-                                </div>
-                            </div>
-
-                            <div class="box is-flex is-flex-wrap-wrap is-flex-direction-column" id="lada" style="max-width:24em; height:15em;">
-                                <h3 class="subtitle" style="text-align: center;">Positioning</h3>
-                                <div class="block is-flex is-flex-direction-row" style="width:100%;justify-content: space-evenly;">
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Min rating</p><h2 class="subtitle">69 Avg</h2></div>
-                                    <div class="box" style="width:8em; height: 8em; margin:10px"><p>Mål</p><h2 class="subtitle">73 Avg</h2></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="block is-flex is-flex-direction-column" style="gap:0; padding:0; margin:0;">
-                            <div class="block is-flex" style="gap:1em; align-content:center;height:2em;">
-                                <h2 class="subtitle" style="padding:0;margin-bottom:0.2em;align-self:center;">massiive</h2>
-                                <div class="box is-flex" style="width:100px; padding:0; justify-content:left; align-items:center;">
-                                    <div class="box is-flex" style="height:100%; margin:0; gap:0; width:50%; padding:0; justify-content:center; align-items:center;">
-                                        <p>HLTV:</p>
-                                    </div>
-                                    <p style="margin-left:0.65em;"><strong>1.19</strong></p>
-                                </div>
-                            </div>
-                            <div class="block is-flex" style="gap:1em; align-content:center;height:1.5em;">
-                                <p>FAV Vapen</p>
-                                <div class="box is-flex" style="width:max-content; padding:0; justify-content:left; align-items:center; padding:0.3em;">
-                                    <p>AWP | Deagle | MAC-10 | MP9 | USP</p>
-                                </div>
-                            </div>
-                            <div class="block is-flex is-flex-direction-column" style="justify-self: left;gap:0.5em">
-                                <p style="text-align: left; text-decoration: underline;"><strong>Din bästa karta</strong></p>
-                                <figure class="image is-128x128 hoverable">
-                                    <img src="Maps/nuke.png" alt="Nuke" style="border:1px black solid">
-                                </figure>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="block user-content" data-username="default">
-                        <h2 class="subtitle" style="text-decoration: underline;"><strong>Logga in för att se din statistik</strong></h2>
-                    </div>
-
-                    <div class="block user-content" data-username="admin">
-                        <h2 class="subtitle" style="text-decoration: underline;"><strong>Din användare har tyvärr ingen statistik att visa, vänligen ladda upp matcher och försök igen.</strong></h2>
-                    </div>
+                    <!-- Forum Posts -->
+                    <div id="forum-posts"></div>
+                </div>
             </section>
 
             <script>
-                let username;
-                if (typeof username === 'undefined'){
-                    const welcomeText = document.getElementById('welcome-message')?.textContent || "";
-                    username = welcomeText.replace("Inloggad som : ", "").trim().toLowerCase();
-                    console.log(username);
+                const form = document.getElementById('forum-form');
+                const authorInput = document.getElementById('author');
+                const messageInput = document.getElementById('message');
+                const postsContainer = document.getElementById('forum-posts');
+
+                function savePost(post) {
+                    const posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+                    posts.push(post);
+                    localStorage.setItem('forumPosts', JSON.stringify(posts));
                 }
 
-                document.querySelectorAll('.user-content').forEach(block => {
-                    const targetUser = block.getAttribute('data-username').toLowerCase();
-                    if (targetUser === username) {
-                        block.classList.remove('hidden');
-                    }   else if (targetUser === 'default' && !document.querySelector(`.user-content[data-username="${username}"]`)){
-                        block.classList.remove('hidden');
-                    } else {
-                        block.classList.add('hidden');
-                    }
-                })
-
-                function checkusername(){
-                    if (typeof username === 'undefined'){
-                    const welcomeText = document.getElementById('welcome-message')?.textContent || "";
-                    username = welcomeText.replace("Inloggad som : ", "").trim().toLowerCase();
-                    console.log(username);
+                function loadPosts() {
+                    postsContainer.innerHTML = '';
+                    const posts = JSON.parse(localStorage.getItem('forumPosts')) || [];
+                    posts.reverse().forEach(post => {
+                        const postElement = document.createElement('div');
+                        postElement.className = 'box forum-post';
+                        postElement.innerHTML = `
+                            <p><strong>${escapeHtml(post.author)}</strong> <small class='has-text-grey'>${new Date(post.timestamp).toLocaleString()}</small></p>
+                            <p>${escapeHtml(post.message).replace(/\n/g, '<br>')}</p>
+                        `;
+                        postsContainer.appendChild(postElement);
+                    });
                 }
 
-                document.querySelectorAll('.user-content').forEach(block => {
-                    const targetUser = block.getAttribute('data-username').toLowerCase();
-                    if (targetUser === username) {
-                        block.classList.remove('hidden');
-                    }   else if (targetUser === 'default' && !document.querySelector(`.user-content[data-username="${username}"]`)){
-                        block.classList.remove('hidden');
-                    } else {
-                        block.classList.add('hidden');
-                    }
-                })
+                function escapeHtml(text) {
+                    const map = {
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        '"': '&quot;',
+                        "'": '&#039;'
+                    };
+                    return text.replace(/[&<>"']/g, m => map[m]);
                 }
+
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const author = authorInput.value.trim();
+                    const message = messageInput.value.trim();
+                    if (author && message) {
+            	        const post = {
+                            timestamp: Date.now(),
+                            author: author,
+                            message: message
+                        };
+                        savePost(post);
+                        loadPosts();
+                        form.reset();
+                        }
+                });
+
+                window.addEventListener('DOMContentLoaded', loadPosts);
             </script>
         </div>
     </div>
